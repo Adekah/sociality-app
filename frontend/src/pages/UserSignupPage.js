@@ -8,16 +8,20 @@ class UserSignupPage extends React.Component {
         displayName: null,
         password: null,
         passwordRepeat: null,
-        pendingApiCall: false
+        pendingApiCall: false,
+        errors: {}
     };
 
     onChange = event => {
         //   const value = event.target.value;
         //    const name = event.target.name;
 
-        const { name, value } = event.target
+        const { name, value } = event.target;
+        const errors = { ...this.state.errors } // errors objesinin kopyasını oluşturdum
+        errors[name] = undefined
         this.setState({
-            [name]: value
+            [name]: value,
+            errors
         })
     }
 
@@ -36,7 +40,11 @@ class UserSignupPage extends React.Component {
 
         try {
             const response = await signup(body);
-        } catch (error) { }
+        } catch (error) {
+            if (error.response.data.validateErrors) {
+                this.setState({ errors: error.response.data.validateErrors })
+            }
+        }
         this.setState({ pendingApiCall: false });
 
 
@@ -51,14 +59,16 @@ class UserSignupPage extends React.Component {
 
 
     render() {
-        const { pendingApiCall } = this.state;
+        const { pendingApiCall, errors } = this.state;
+        const { username } = errors;
         return (
             <div className="container">
                 <form>
                     <h1 className="text-center">Sign Up</h1>
                     <div className="form-group">
                         <label>UserName</label>
-                        <input className="form-control" name="username" onChange={this.onChange}></input>
+                        <input className={username ? "form-control is-invalid" : "form-control"} name="username" onChange={this.onChange}></input>
+                        <div className="invalid-feedback">{username}</div>
                     </div>
                     <div className="form-group">
                         <label>Display Name</label>
