@@ -36,7 +36,7 @@ public class UserController {
         Map<String, String> validationErrors = new HashMap<>();
 
         for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
-            validationErrors.put(fieldError.getField(), fieldError.getField()+" alanı boş olamaz");
+            validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
         error.setValidateErrors(validationErrors);
         return error;
