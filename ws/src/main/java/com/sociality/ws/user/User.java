@@ -16,7 +16,7 @@ public class User {
     @GeneratedValue
     private long id;
 
-    @NotNull
+    @NotNull(message = "{sociality.constraint.username.NotNull.message}")
     @Size(min = 4, max = 30)
     @UniqueUsername
     private String username;
@@ -26,7 +26,7 @@ public class User {
     private String displayName;
 
     @NotNull
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "{sociality.constraint.password.Pattern.message}")
     @Size(min = 4, max = 30)
     private String password;
 

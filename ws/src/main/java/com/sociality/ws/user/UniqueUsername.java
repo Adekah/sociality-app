@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {UniqueUsernameValidator.class})
 public @interface UniqueUsername {
-    String message() default "Username must be unique";
+    String message() default "{sociality.constraint.username.UniqueUsername.message}";
 
     Class<?>[] groups() default {};
 
