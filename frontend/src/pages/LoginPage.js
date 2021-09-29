@@ -31,7 +31,7 @@ const {t}=this.props;
                 <form>
                     <h1 className="text-center">{t('Login')}</h1>
                     <Input name="username" label={t('Username')} onChange={this.onChange} />
-                    <Input name="password" label={t('Password')} onChange={this.onChange} />
+                    <Input name="password" label={t('Password')} onChange={this.onChange} type="password" />
                     <div className="text-center ">
                         <button className="btn btn-primary"onClick={this.onClickLogin} >{t('Login')}</button>
                     </div>
