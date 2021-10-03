@@ -30,4 +30,5 @@ public class User {
     @Size(min = 4, max = 30)
     private String password;
 
+    private String image;
 }
