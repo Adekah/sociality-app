@@ -18,7 +18,7 @@ public class SocialityUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList("Role User");
+        return AuthorityUtils.createAuthorityList("Role_user");
     }
 
     @Override
