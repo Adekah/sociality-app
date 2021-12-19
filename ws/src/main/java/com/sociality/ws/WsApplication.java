@@ -21,7 +21,7 @@ public class WsApplication {
                 User user = new User();
                 user.setUsername("adekah");
                 user.setPassword("P4ssword");
-                user.setDisplayName("adekah");
+                user.setDisplayName("displayAdekah");
                 userService.save(user);
         };
     }
