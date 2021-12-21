@@ -19,6 +19,6 @@ public class UserAuthService implements UserDetailsService {
         User inDB = userRepository.findByUsername(username);
         if(inDB ==null)
             throw new UsernameNotFoundException("user not found");
-        return new SocialityUserDetails(inDB);
+        return inDB;
     }
 }
