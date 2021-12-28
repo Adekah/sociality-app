@@ -7,10 +7,14 @@ import LoginPage from './pages/LoginPage';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
 import LanguageSelector from './component/LanguageSelector';
+import ApiProgress from './shared/ApiProgress.js';
 
 ReactDOM.render(
   <div>
-    <UserSignupPage />
+    <ApiProgress>
+      <UserSignupPage />
+    </ApiProgress>
+
     <LanguageSelector />
   </div>,
   document.getElementById('root')

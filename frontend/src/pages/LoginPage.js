@@ -2,7 +2,6 @@ import React from "react";
 import Input from "../component/Input";
 import { withTranslation } from "react-i18next";
 import { login } from "../api/apicalls";
-import axios from "axios";
 import ButtonWithProgres from "../component/ButtonWithProgres";
 
 class LoginPage extends React.Component {
@@ -10,25 +9,7 @@ class LoginPage extends React.Component {
     state = {
         username: null,
         password: null,
-        error: null,
-        pendingApiCall: false
-    }
-
-    componentDidMount() {
-
-        axios.interceptors.request.use(request => {
-            this.setState({ pendingApiCall: true });
-            return request;
-        });
-
-        axios.interceptors.response.use(response => {
-            this.setState({ pendingApiCall: false });
-            return response;
-        }, (error) => {
-            this.setState({ pendingApiCall: false });
-            throw error;
-        });
-
+        error: null
     }
 
     onChange = event => {
@@ -38,7 +19,7 @@ class LoginPage extends React.Component {
     }
 
     onClickLogin = async event => {
-        event.preventDefault();
+        event.preventDefault(); 
         const { username, password } = this.state;
         const creds = { username, password };
         this.setState({ error: null })
@@ -54,8 +35,8 @@ class LoginPage extends React.Component {
 
 
     render() {
-        const { t } = this.props;
-        const { username, password, error, pendingApiCall } = this.state;
+        const { t,pendingApiCall } = this.props;
+        const { username, password, error } = this.state;
         const buttonEnabled = username && password;
         return (
             <div className="container">
