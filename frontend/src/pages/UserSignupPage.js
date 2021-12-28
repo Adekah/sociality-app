@@ -3,6 +3,7 @@ import { withTranslation } from 'react-i18next';
 import { signup } from '../api/apicalls';
 import Input from '../component/Input';
 import ButtonWithProgres from '../component/ButtonWithProgres';
+import { withApiProgress } from '../shared/ApiProgress';
 
 
 class UserSignupPage extends React.Component {
@@ -84,16 +85,19 @@ class UserSignupPage extends React.Component {
                     <div className="text-center">
                         <ButtonWithProgres
                             onClick={this.onClickSignUp}
-                            disabled={passwordRepeat != undefined || pendingApiCall}
+                            disabled={passwordRepeat !== undefined || pendingApiCall}
                             pendingApiCall={pendingApiCall}
                             text={t('Sign Up')} />
                     </div>
-                </form>
+                </form> 
             </div>
         )
     }
 }
 
-const UserSignUpPageWithTranslation = withTranslation()(UserSignupPage);
+const UserSignUpPageWithApiProgress = withApiProgress(UserSignupPage, '/api/1.0/users');
+
+const UserSignUpPageWithTranslation = withTranslation()(UserSignUpPageWithApiProgress);
+
 
 export default UserSignUpPageWithTranslation;

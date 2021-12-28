@@ -11,10 +11,7 @@ import ApiProgress from './shared/ApiProgress.js';
 
 ReactDOM.render(
   <div>
-    <ApiProgress>
-      <UserSignupPage />
-    </ApiProgress>
-
+    <LoginPage />
     <LanguageSelector />
   </div>,
   document.getElementById('root')
