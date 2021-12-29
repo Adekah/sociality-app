@@ -20,28 +20,31 @@ class LoginPage extends React.Component {
     }
 
     onClickLogin = async event => {
-        event.preventDefault(); 
+        event.preventDefault();
         const { username, password } = this.state;
         const creds = { username, password };
+        const { push } = this.props.history;
+
         this.setState({ error: null })
         try {
-            await login(creds)
+            await login(creds);
+            push('/');
         } catch (apiError) {
             this.setState({
                 error: apiError.response.data.message
             })
         }
 
-    }
+    };
 
 
     render() {
-        const { t,pendingApiCall } = this.props;
+        const { t, pendingApiCall } = this.props;
         const { username, password, error } = this.state;
         const buttonEnabled = username && password;
         return (
-            <div className="container">
-                <form>
+            <div className="container ">
+                <form className="mb-2">
                     <h1 className="text-center">{t('Login')}</h1>
                     <Input name="username" label={t('Username')} onChange={this.onChange} />
                     <Input name="password" label={t('Password')} onChange={this.onChange} type="password" />
