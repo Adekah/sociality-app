@@ -8,11 +8,11 @@ import reportWebVitals from './reportWebVitals';
 import './i18n';
 import LanguageSelector from './component/LanguageSelector';
 import ApiProgress from './shared/ApiProgress.js';
+import App from './App';
 
 ReactDOM.render(
   <div>
-    <LoginPage />
-    <LanguageSelector />
+<App/>
   </div>,
   document.getElementById('root')
 );
