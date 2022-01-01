@@ -10,12 +10,12 @@ function App() {
   return (
     <div>
       <HashRouter>
-        <TopBar/>
+        <TopBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route  path="/login" component={LoginPage} />
-          <Route  path="/signup" component={UserSignupPage} />
-          <Route  path="/user/:username" component={UserPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={UserSignupPage} />
+          <Route path="/user/:username" component={UserPage} />
           <Redirect to="/" />
         </Switch>
       </HashRouter>

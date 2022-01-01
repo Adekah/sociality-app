@@ -49,7 +49,7 @@ class UserSignupPage extends React.Component {
             displayName,
             password
         };
-     
+
         try {
             const response = await signup(body);
         } catch (error) {
@@ -72,7 +72,7 @@ class UserSignupPage extends React.Component {
     render() {
         const { errors } = this.state;
         const { username, displayName, password, passwordRepeat } = errors;
-        const { t ,pendingApiCall} = this.props;
+        const { t, pendingApiCall } = this.props;
         return (
             <div className="container">
                 <form>
@@ -89,7 +89,7 @@ class UserSignupPage extends React.Component {
                             pendingApiCall={pendingApiCall}
                             text={t('Sign Up')} />
                     </div>
-                </form> 
+                </form>
             </div>
         )
     }
