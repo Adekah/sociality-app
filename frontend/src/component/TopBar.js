@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
-import { withTranslation, WithTranslation } from 'react-i18next';
-
+import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { logoutSuccess } from '../redux/authActions';
 class TopBar extends Component {
     state = {
         isloggedIn: true,
@@ -11,9 +12,7 @@ class TopBar extends Component {
 
     render() {
 
-        const { t } = this.props;
-        const { isloggedIn, username } = this.state;
-
+        const { t, username, isloggedIn, onLogoutSuccess } = this.props;
         let links = (
             <ul className="navbar-nav ms-auto">
                 <li>
@@ -36,7 +35,7 @@ class TopBar extends Component {
                             {username}
                         </Link>
                     </li>
-                    <li className='nav-link'>{t('Logout')}</li>
+                    <li className='nav-link' onClick={onLogoutSuccess}>{t('Logout')}</li>
                 </ul>
             );
         }
@@ -56,4 +55,19 @@ class TopBar extends Component {
     }
 }
 
-export default withTranslation()(TopBar);
+const TopBarWithTranslation = withTranslation()(TopBar);
+
+const mapStateToProps = store => {
+    return {
+        isloggedIn: store.isloggedIn,
+        username: store.username
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+    onLogoutSuccess: () => dispatch(logoutSuccess())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopBarWithTranslation);

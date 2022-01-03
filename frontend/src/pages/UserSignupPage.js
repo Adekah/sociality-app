@@ -51,7 +51,8 @@ class UserSignupPage extends React.Component {
         };
 
         try {
-            const response = await signup(body);
+           const response = await signup(body);
+           console.log(response);
         } catch (error) {
             if (error.response.data.validateErrors) {
                 this.setState({ errors: error.response.data.validateErrors })
