@@ -1,9 +1,10 @@
 import React from 'react';
+import ProfileCard from '../component/ProfileCard';
 
 const UserPage = () => {
     return (
         <div className='container'>
-            User Page
+            <ProfileCard></ProfileCard>
         </div>
     );
 };
